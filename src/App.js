@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.scss";
+import Login from "./components/auth/login/login";
+
+import store from "./redux/store";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Signup from "./components/auth/signup/signup";
+import Dashboard from "./components/user/dashboard/dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <main className="main">
+          <Route path="/" exact render={() => <Login />} />
+          <Route path="/signup" render={() => <Signup />} />
+          <Route path="/dashboard" render={() => <Dashboard />} />
+        </main>
+      </Router>
+    </Provider>
   );
 }
 
