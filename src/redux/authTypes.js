@@ -1,2 +1,3 @@
 export const SET_USER = "SET_USER";
 export const USER_ACCOUNT_FAILURE = "USER_ACCOUNT_FAILURE";
+export const LOGOUT_USER = "LOGOUT_USER";

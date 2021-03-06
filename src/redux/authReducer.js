@@ -1,4 +1,4 @@
-import { SET_USER, USER_ACCOUNT_FAILURE } from "./authTypes";
+import { SET_USER, USER_ACCOUNT_FAILURE, LOGOUT_USER } from "./authTypes";
 
 const initialState = {
   loading: true,
@@ -17,10 +17,13 @@ const authReducer = (state = initialState, action) => {
       };
     case USER_ACCOUNT_FAILURE:
       return {
+        ...state,
         loading: false,
-        currentUser: [],
+        currentUser: {},
         error: action.payload,
       };
+    case LOGOUT_USER:
+      return { ...state, currentUser: {} };
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../../assets/images/logo.svg";
 import "../auth.scss";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { useForm } from "react-hook-form";
 import { login } from "../../../redux/authAction";
@@ -11,6 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 function Login({ loginUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -27,6 +28,7 @@ function Login({ loginUser }) {
     loginUser({ email, password });
     setEmail("");
     setPassword("");
+    history.push("/dashboard");
   };
 
   return (
@@ -70,10 +72,10 @@ function Login({ loginUser }) {
             <form onSubmit={handleSubmit(onLogin)} autoComplete="off">
               <div className="form--wrap mt-5">
                 <div className="input">
-                  <label htmlFor="label">Email or phone number</label>
+                  <label htmlFor="label">Email</label>
                   <input
                     type="text"
-                    placeholder="Type your email or phone number"
+                    placeholder="Type your email"
                     name="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}

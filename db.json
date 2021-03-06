@@ -13,8 +13,8 @@
       "id": 2
     }
   ],
-  "login": {
-    "email": "jon@gmail.com",
-    "password": "12345678"
+  "currentUser": {
+    "email": "a@y.com",
+    "password": "42342342342"
   }
 }
